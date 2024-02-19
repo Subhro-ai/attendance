@@ -2,18 +2,17 @@ import math
 
 def takeInputs():
     total = int(input("Enter total attendance "))
-    abs = int(input("Enter Absent "))
+    #abs = int(input("Enter Absent "))
     pre = int(input("Enter Present "))
-    return total, abs, pre
+    return total, pre
 
 def calcAtt(total, pre):
     att = float((pre/total) * 100)
-    print("Attendance % : ", att)
     return att
 
 def calcMargin(att):
-    marg = ((math.ceil(75 - att)) / 100)* total
-    print("Margin = ", marg)
+    marg = math.ceil(((att - 75) / 100)* total)
+    print("Margin =", marg)
     return
 
 def future(total, pre):
@@ -32,13 +31,20 @@ def required(total, pre):
             req += 1
             pre += 1
         else: break
-    print("Required : ", req)
+    print("Required :", req)
     return
 
-total, abs, pre = takeInputs()
+total, pre = takeInputs()
+abs = total - pre
 att = calcAtt(total, pre)
-calcMargin(att)
+print("Attendance % :", att)
+if att >= 75:
+    calcMargin(att)
+else: 
+    required(total, pre)
+print("Wanna bunk? (y/n)")
 future(total, pre)
+print(total)
 
 
 
