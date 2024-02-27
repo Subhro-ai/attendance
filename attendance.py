@@ -2,7 +2,6 @@ import math
 
 def takeInputs():
     total = int(input("Enter total attendance "))
-    #abs = int(input("Enter Absent "))
     pre = int(input("Enter Present "))
     return total, pre
 
@@ -42,8 +41,9 @@ if att >= 75:
     calcMargin(att)
 else: 
     required(total, pre)
-print("Wanna bunk? (y/n)")
-future(total, pre)
+choice = input("Wanna bunk? (y/n)")
+if choice == 'y':
+    future(total, pre)
 print(total)
 
 
